@@ -1,54 +1,72 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
+import uuid from "react-native-uuid";
+// import { useNavigation } from "@react-navigation/native";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Task from "../../components/TasksComponents/TodayTask";
+import ModalNewTask from "../../components/TasksComponents/ModalNewTask";
 import styles from "./style";
-import { activities } from "../../activities";
+import { objectActivities } from "../../activities";
 
 export default function TodayTask() {
-  const [task, setTask] = useState("Today");
+  // const [task, setTask] = useState("Today");
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [activities, setActivities] = useState(objectActivities);
+
+  // const navigation = useNavigation();
+  // const handlePress = () => {
+  //   navigation.navigate("NewTask");
+  // };
+
+  const handlePress = () => {
+    setModalVisible(true);
+  };
+
+  const handleSubmit = (newTask) => {
+    console.log("Task submitted", newTask);
+    setModalVisible(false);
+  };
 
   return (
-    <View>
-      {/* <View style={styles.navBar}>
-        <Button
-          onPress={() => {
-            setTask("Messages");
-          }}
-          color={"#B3B3B3"}
-          title="Messages"
-        ></Button>
-        <Button
-          onPress={() => {
-            setTask("Today");
-          }}
-          color={"#B3B3B3"}
-          title="Today's Task"
-        ></Button>
-        <Button
-          onPress={() => {
-            setTask("Last");
-          }}
-          color={"#B3B3B3"}
-          title="Last Activity"
-        ></Button>
-      </View> */}
+    <ScrollView>
+      <View>
+        <View style={styles.container}>
+          <View style={styles.headerTask}>
+            <View>
+              <Text style={styles.headerContentTitle}>Today's Task</Text>
+              <Text style={styles.headerContentSubTitle}>
+                Wednesday, 18 Sep
+              </Text>
+            </View>
 
-      <View style={styles.container}>
-        <View style={styles.headerTask}>
-          <View>
-            <Text style={styles.headerContentTitle}>Today's Task</Text>
-            <Text style={styles.headerContentSubTitle}>Wednesday, 18 Sep</Text>
+            <TouchableOpacity
+              onPress={handlePress}
+              style={styles.newTaskButton}
+            >
+              <MaterialCommunityIcons name="plus" size={16} color={"#0D5BFB"} />
+
+              <Text style={styles.netTaskButtonContent}>New Task</Text>
+            </TouchableOpacity>
           </View>
-          <Button style={styles.newTaskButton} title="New Task"></Button>
+
+          <View>
+            {objectActivities.map((activity) => {
+              return (
+                <Task key={activity.id} objectActivities={activity}></Task>
+              );
+            })}
+          </View>
         </View>
 
-        <View>
-          {activities.map((activity) => {
-            return <Task activities={activity}></Task>;
-          })}
-        </View>
+        <ModalNewTask
+          visible={modalVisible}
+          onClose={() => setModalVisible(false)}
+          onSubmit={handleSubmit}
+        ></ModalNewTask>
       </View>
-    </View>
+    </ScrollView>
   );
 }

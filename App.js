@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -12,8 +12,6 @@ const Tab = createMaterialTopTabNavigator();
 export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/* // <View style={styles.container}> */}
-
       <NavigationContainer>
         <Tab.Navigator
           initialRouteName="Today's Task"
@@ -23,7 +21,9 @@ export default function App() {
           }}
         >
           <Tab.Screen name="Messages" component={Message}></Tab.Screen>
+
           <Tab.Screen name="Today's Task" component={TodayTask}></Tab.Screen>
+
           <Tab.Screen
             name="Last Activity"
             component={LastActivity}

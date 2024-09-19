@@ -1,21 +1,8 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  navBar: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: 10,
-    marginBottom: 15,
-  },
   container: {
     backgroundColor: "#F9F9F9",
-    // borderRadius: 5,
-    // shadowColor: "black", // Shadow color
-    // shadowOffset: { width: 0, height: -2 },
-    // shadowOpacity: 0.1, // Shadow opacity
-    // elevation: 5,
-    // borderTopColor: 1,
-    // borderTopColor: "#6e6b6b",
   },
   headerTask: {
     flexDirection: "row",
@@ -32,5 +19,17 @@ export default StyleSheet.create({
   headerContentSubTitle: {
     color: "#474646b0",
   },
-  newTaskButton: {},
+  newTaskButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#E2EBFA",
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+  },
+  netTaskButtonContent: {
+    fontSize: 16,
+    color: "#0D5BFB",
+    marginLeft: 2,
+  },
 });

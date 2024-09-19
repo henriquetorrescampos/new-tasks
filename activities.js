@@ -1,6 +1,6 @@
 import uuid from "react-native-uuid";
 
-export const activities = [
+export let objectActivities = [
   {
     id: uuid.v4(), //generates a random UUID
     name: "Estudar",
@@ -21,5 +21,19 @@ export const activities = [
     description: "Assistir The Office",
     status: true,
     date: "10/10/2024",
+  },
+  {
+    id: uuid.v4(),
+    name: "Jogar",
+    description: "Jogar Futebol",
+    status: true,
+    date: "10/09/2024",
+  },
+  {
+    id: uuid.v4(),
+    name: "Beber água",
+    description: "Beber 2L de água",
+    status: true,
+    date: "10/08/2024",
   },
 ];
