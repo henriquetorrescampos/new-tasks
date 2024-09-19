@@ -1,5 +1,11 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { useState } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
+import { useEffect, useState } from "react";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -12,7 +18,16 @@ export default function TodayTask() {
   // const [task, setTask] = useState("Today");
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [activities, setActivities] = useState(objectActivities);
+  const [tasks, setTasks] = useState([]);
+  const [search, setSearch] = useState("");
+  // const [activities, setActivities] = useState(objectActivities);
+
+  useEffect(() => {
+    const taskFilter = objectActivities.filter((task) =>
+      task.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase())
+    );
+    setTasks(taskFilter);
+  }, [search]);
 
   // const navigation = useNavigation();
   // const handlePress = () => {
@@ -43,7 +58,6 @@ export default function TodayTask() {
               <Text style={styles.headerContentTitle}>Today's Task</Text>
               <Text style={styles.headerContentSubTitle}>{getDate()}</Text>
             </View>
-
             <TouchableOpacity
               onPress={handlePress}
               style={styles.newTaskButton}
@@ -54,16 +68,25 @@ export default function TodayTask() {
             </TouchableOpacity>
           </View>
 
+          <TextInput
+            style={styles.searchInput}
+            value={search}
+            onChangeText={setSearch}
+            placeholder="Search for task"
+          ></TextInput>
+
           <View>
-            {objectActivities.map((activity) => {
-              return (
-                <Task key={activity.id} objectActivities={activity}></Task>
-              );
-            })}
+            {tasks.length === 0 ? (
+              <Text style={styles.noTasksFound}>No tasks found.</Text>
+            ) : (
+              tasks.map((activity) => (
+                <Task key={activity.id} objectActivities={activity}></Task> //component
+              ))
+            )}
           </View>
         </View>
 
-        <ModalNewTask
+        <ModalNewTask //component
           visible={modalVisible}
           onClose={() => setModalVisible(false)}
           onSubmit={handleSubmit}

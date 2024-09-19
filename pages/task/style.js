@@ -32,4 +32,21 @@ export default StyleSheet.create({
     color: "#0D5BFB",
     marginLeft: 2,
   },
+  searchInput: {
+    backgroundColor: "#E2EBFA",
+    borderRadius: 10,
+    marginRight: 20,
+    marginLeft: 20,
+    marginTop: 20,
+    alignItems: "center",
+    paddingVertical: 12,
+    paddingLeft: 10,
+  },
+  noTasksFound: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 15,
+    marginBottom: 20,
+    marginTop: 20,
+  },
 });

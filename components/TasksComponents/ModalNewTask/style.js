@@ -24,20 +24,17 @@ export default StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
   },
-
   modalTouchable: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
-
   modalTouchableCancel: {
     backgroundColor: "#f5d2d3",
     borderRadius: 10,
     padding: 10,
     marginHorizontal: 20,
   },
-
   modalTouchableSend: {
     backgroundColor: "#E2EBFA",
     borderRadius: 10,
