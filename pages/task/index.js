@@ -1,7 +1,5 @@
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
-import uuid from "react-native-uuid";
-// import { useNavigation } from "@react-navigation/native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -21,6 +19,12 @@ export default function TodayTask() {
   //   navigation.navigate("NewTask");
   // };
 
+  function getDate() {
+    const now = new Date();
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    return new Intl.DateTimeFormat("en-GB", options).format(now);
+  }
+
   const handlePress = () => {
     setModalVisible(true);
   };
@@ -37,9 +41,7 @@ export default function TodayTask() {
           <View style={styles.headerTask}>
             <View>
               <Text style={styles.headerContentTitle}>Today's Task</Text>
-              <Text style={styles.headerContentSubTitle}>
-                Wednesday, 18 Sep
-              </Text>
+              <Text style={styles.headerContentSubTitle}>{getDate()}</Text>
             </View>
 
             <TouchableOpacity

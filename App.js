@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";

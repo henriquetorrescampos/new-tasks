@@ -6,7 +6,6 @@ import {
   Switch,
   TouchableOpacity,
   Text,
-  StyleSheet,
 } from "react-native";
 
 import styles from "./style";
@@ -30,18 +29,20 @@ export default function ModalNewTask({ visible, onClose, onSubmit }) {
       visible={visible}
       animationType="slide"
       transparent={true}
-      presentationStyle="pageSheet"
+      presentationStyle="overFullScreen"
       onRequestClose={onClose}
     >
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <TextInput
+            style={styles.modalTextInput}
             placeholder="Task name? "
             onChangeText={setTaskName}
             value={taskName}
           ></TextInput>
 
           <TextInput
+            style={styles.modalTextInput}
             placeholder="Description? "
             onChangeText={setDescription}
             value={description}
@@ -50,19 +51,28 @@ export default function ModalNewTask({ visible, onClose, onSubmit }) {
           <Switch value={status} onValueChange={setStatus}></Switch>
 
           <TextInput
+            style={styles.modalTextInput}
             placeholder="Date"
             keyboardType="numeric"
             onChangeText={setDate}
             value={date}
           ></TextInput>
 
-          <TouchableOpacity onPress={onClose}>
-            <Text>Cancel</Text>
-          </TouchableOpacity>
+          <View style={styles.modalTouchable}>
+            <TouchableOpacity
+              style={styles.modalTouchableCancel}
+              onPress={onClose}
+            >
+              <Text>Cancel</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={handleSubmit}>
-            <Text>Send Task</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.modalTouchableSend}
+              onPress={handleSubmit}
+            >
+              <Text>Send Task</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </Modal>
