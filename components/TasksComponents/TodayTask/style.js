@@ -34,4 +34,9 @@ export default StyleSheet.create({
     fontSize: 14,
     color: "#474646b0",
   },
+  checkIcon: {
+    position: "absolute",
+    right: 10,
+    top: 10,
+  },
 });

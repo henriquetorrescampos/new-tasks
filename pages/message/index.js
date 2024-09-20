@@ -1,7 +1,11 @@
 import { View, Text } from "react-native";
 
+import styles from "./style";
+
 export default function Message() {
-  <View>
-    <Text>Sou page Message</Text>
-  </View>;
+  return (
+    <View>
+      <Text style={styles.noMessage}>There are no messages here</Text>
+    </View>
+  );
 }
