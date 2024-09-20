@@ -40,11 +40,6 @@ export default function TodayTask() {
     setTasks(taskFilter);
   }, [search]);
 
-  // const navigation = useNavigation();
-  // const handlePress = () => {
-  //   navigation.navigate("NewTask");
-  // };
-
   function date() {
     const now = new Date();
     const options = { day: "2-digit", month: "short", year: "numeric" };
