@@ -4,7 +4,7 @@ Este é um projeto em **React Native** a respeito das suas tasks/tarefas
 
 ## Projeto
 
-![Project Image](assets/app.png)
+![Project Image](assets/img-app.png)
 
 ## Funcionalidades
 

@@ -92,7 +92,7 @@ export default function TodayTask() {
           ></TextInput>
 
           <View>
-            {tasks.length === 0 ? (
+            {tasks.length === 0 ? ( //se task.len == 0 ?, senao :
               <Text style={styles.noTasksFound}>No task found.</Text>
             ) : (
               tasks.map((activity) => (
