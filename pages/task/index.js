@@ -7,12 +7,12 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Task from "../../components/TasksComponents/TodayTask";
 import ModalNewTask from "../../components/TasksComponents/ModalNewTask";
 import styles from "./style";
 import { objectActivities } from "../../activities";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function TodayTask() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,6 +23,7 @@ export default function TodayTask() {
     const fetchTasks = async () => {
       try {
         const storedTasks = await AsyncStorage.getItem("tasks");
+
         if (storedTasks) {
           setTasks(JSON.parse(storedTasks));
         }
@@ -72,6 +73,7 @@ export default function TodayTask() {
               <Text style={styles.headerContentTitle}>Today's Task</Text>
               <Text style={styles.headerContentSubTitle}>{date()}</Text>
             </View>
+
             <TouchableOpacity
               onPress={handlePress}
               style={styles.newTaskButton}
@@ -91,7 +93,7 @@ export default function TodayTask() {
 
           <View>
             {tasks.length === 0 ? (
-              <Text style={styles.noTasksFound}>No tasks found.</Text>
+              <Text style={styles.noTasksFound}>No task found.</Text>
             ) : (
               tasks.map((activity) => (
                 <Task key={activity.id} objectActivities={activity}></Task> //component

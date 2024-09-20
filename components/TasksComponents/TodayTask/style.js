@@ -4,9 +4,9 @@ export default StyleSheet.create({
   activityContainer: {
     backgroundColor: "#FFF",
     borderRadius: 6,
-    shadowColor: "#000", // Shadow color
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1, // Shadow opacity
+    shadowOpacity: 0.1,
     elevation: 5,
     marginTop: 26,
     marginHorizontal: 25,
