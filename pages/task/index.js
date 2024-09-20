@@ -35,6 +35,7 @@ export default function TodayTask() {
   }, []);
 
   useEffect(() => {
+    // if (search === "") return;
     const taskFilter = objectActivities.filter((task) =>
       task.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase())
     );
