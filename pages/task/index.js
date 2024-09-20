@@ -6,21 +6,32 @@ import {
   TextInput,
 } from "react-native";
 import { useEffect, useState } from "react";
-
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Task from "../../components/TasksComponents/TodayTask";
 import ModalNewTask from "../../components/TasksComponents/ModalNewTask";
 import styles from "./style";
 import { objectActivities } from "../../activities";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function TodayTask() {
-  // const [task, setTask] = useState("Today");
-
   const [modalVisible, setModalVisible] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
-  // const [activities, setActivities] = useState(objectActivities);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const storedTasks = await AsyncStorage.getItem("tasks");
+        if (storedTasks) {
+          setTasks(JSON.parse(storedTasks));
+        }
+      } catch (error) {
+        console.error("Failed to load tasks", error);
+      }
+    };
+    fetchTasks();
+  }, []);
 
   useEffect(() => {
     const taskFilter = objectActivities.filter((task) =>
@@ -34,7 +45,7 @@ export default function TodayTask() {
   //   navigation.navigate("NewTask");
   // };
 
-  function getDate() {
+  function date() {
     const now = new Date();
     const options = { day: "2-digit", month: "short", year: "numeric" };
     return new Intl.DateTimeFormat("en-GB", options).format(now);
@@ -44,9 +55,17 @@ export default function TodayTask() {
     setModalVisible(true);
   };
 
-  const handleSubmit = (newTask) => {
-    console.log("Task submitted", newTask);
+  const handleSubmit = async (newTask) => {
+    const updatedTasks = [...tasks, newTask]; // Add the new task
+    setTasks(updatedTasks);
     setModalVisible(false);
+
+    try {
+      // Save updated tasks to AsyncStorage
+      await AsyncStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    } catch (error) {
+      console.error("Failed to save task", error);
+    }
   };
 
   return (
@@ -56,7 +75,7 @@ export default function TodayTask() {
           <View style={styles.headerTask}>
             <View>
               <Text style={styles.headerContentTitle}>Today's Task</Text>
-              <Text style={styles.headerContentSubTitle}>{getDate()}</Text>
+              <Text style={styles.headerContentSubTitle}>{date()}</Text>
             </View>
             <TouchableOpacity
               onPress={handlePress}

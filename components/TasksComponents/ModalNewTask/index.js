@@ -17,7 +17,14 @@ export default function ModalNewTask({ visible, onClose, onSubmit }) {
   const [date, setDate] = useState("");
 
   const handleSubmit = () => {
-    onSubmit({ taskName, description, status, date });
+    const newTask = {
+      name: taskName,
+      description: description,
+      status: status,
+      date: date,
+    };
+
+    onSubmit(newTask);
     setTaskName("");
     setDescription("");
     setStatus(false);

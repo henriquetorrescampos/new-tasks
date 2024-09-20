@@ -7,7 +7,7 @@ export default function Task({ objectActivities }) {
   const [isCompleted, setIsCompleted] = useState(false);
 
   const toggleCompletion = () => {
-    setIsCompleted(!isCompleted); // ! troca pra true
+    setIsCompleted(!isCompleted); // !troca para true e false
   };
 
   return (
@@ -17,7 +17,7 @@ export default function Task({ objectActivities }) {
           <Text
             style={[
               styles.activityName,
-              isCompleted && { textDecorationLine: "line-through" }, // Strikethrough if completed
+              isCompleted && { textDecorationLine: "line-through" }, //if it's true line-through in the name
             ]}
           >
             {objectActivities.name}
@@ -26,7 +26,7 @@ export default function Task({ objectActivities }) {
           <Text
             style={[
               styles.activityDescription,
-              isCompleted && { textDecorationLine: "line-through" }, // Strikethrough if completed
+              isCompleted && { textDecorationLine: "line-through" }, //if it's true line-through in the description
             ]}
           >
             {objectActivities.description}

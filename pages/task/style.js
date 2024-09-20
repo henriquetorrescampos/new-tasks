@@ -45,7 +45,7 @@ export default StyleSheet.create({
   noTasksFound: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 15,
+    fontSize: 18,
     marginBottom: 20,
     marginTop: 20,
   },
