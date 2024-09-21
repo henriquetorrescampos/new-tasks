@@ -97,7 +97,7 @@ export default function TodayTask() {
               <Text style={styles.noTasksFound}>No task found.</Text>
             ) : (
               tasks.map((activity) => (
-                <Task key={activity.id} objectActivities={activity}></Task> //component
+                <Task objectActivities={activity} key={activity.id}></Task> //component
               ))
             )}
           </View>
