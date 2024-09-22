@@ -36,7 +36,7 @@ export default StyleSheet.create({
   },
   checkIcon: {
     position: "absolute",
-    right: 10,
-    top: 10,
+    right: -5,
+    top: -15,
   },
 });

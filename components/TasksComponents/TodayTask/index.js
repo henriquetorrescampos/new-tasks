@@ -36,10 +36,17 @@ export default function Task({ objectActivities }) {
 
           <Text style={styles.activityDate}>{objectActivities.date}</Text>
 
+          <MaterialCommunityIcons
+            style={styles.checkIcon}
+            name="radiobox-blank"
+            size={26}
+            color={"#065FFB"}
+          ></MaterialCommunityIcons>
+
           {isCompleted && (
             <MaterialCommunityIcons
               style={styles.checkIcon}
-              name="check-circle"
+              name="radiobox-marked"
               size={26}
               color={"#065FFB"}
             ></MaterialCommunityIcons>
