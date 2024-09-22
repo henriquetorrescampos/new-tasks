@@ -8,6 +8,8 @@ import {
   Text,
 } from "react-native";
 
+import uuid from "react-native-uuid";
+
 import styles from "./style";
 
 export default function ModalNewTask({ visible, onClose, onSubmit }) {
@@ -18,6 +20,7 @@ export default function ModalNewTask({ visible, onClose, onSubmit }) {
 
   const handleSubmit = () => {
     const newTask = {
+      id: uuid.v4(),
       name: taskName,
       description: description,
       status: status,
